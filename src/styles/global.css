@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font_family_base);
+  font-size: 100%;
+  line-height: var(--line_height_base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color_background);
+  color: var(--color_text_primary);
+  font-size: var(--font_size_base);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+img, video {
+  height: auto;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button, a, input, textarea, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: var(--focus_width) solid var(--color_accent);
+  outline-offset: var(--focus_offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,31 @@
+.setup_page {
+  width: min(100% - var(--space_6) * 2, var(--content_max_width));
+  margin-inline: auto;
+  padding-block: clamp(4rem, 12vw, 10rem);
+}
+
+.setup_label {
+  margin-bottom: var(--space_6);
+  color: var(--color_accent);
+  font-size: var(--font_size_small);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.setup_page h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.setup_page h1 span {
+  display: block;
+}
+
+.setup_description {
+  max-width: 36rem;
+  margin-top: var(--space_8);
+  color: var(--color_text_secondary);
+  word-break: keep-all;
+}

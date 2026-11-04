@@ -1,0 +1,29 @@
+:root {
+  color-scheme: light;
+
+  --color_accent: #c92e0c;
+  --color_background: #fafafa;
+  --color_text_primary: #171717;
+  --color_text_secondary: #555555;
+  --color_border: #dddddd;
+
+  --font_family_base: 'Inter Variable', 'Apple SD Gothic Neo', 'Malgun Gothic',
+    'Noto Sans KR', system-ui, sans-serif;
+  --font_size_small: 0.875rem;
+  --font_size_base: 1rem;
+  --line_height_base: 1.6;
+
+  --space_1: 0.25rem;
+  --space_2: 0.5rem;
+  --space_3: 0.75rem;
+  --space_4: 1rem;
+  --space_6: 1.5rem;
+  --space_8: 2rem;
+  --space_12: 3rem;
+  --space_16: 4rem;
+  --space_24: 6rem;
+
+  --content_max_width: 75rem;
+  --focus_width: 0.1875rem;
+  --focus_offset: 0.25rem;
+}
