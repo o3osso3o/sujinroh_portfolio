@@ -2,7 +2,7 @@
 
 ## 협업 범위
 - 단계별로 구현하고 각 단계 완료 후 다음 요청을 기다린다.
-- 현재 STEP 01: 개발 환경, 기본 스타일, 데이터 구조, 최소 App만 준비한다.
+- 현재 STEP 03: ABOUT까지 구현한다. HEADER/HERO 디자인과 인터랙션은 유지하고 이후 섹션은 다음 요청을 기다린다.
 - 디자인 레퍼런스는 섹션별로 제공받는다. 임의의 이미지, URL, 기여도, 프로젝트 설명을 생성하지 않는다.
 
 ## 구현 기준
@@ -16,8 +16,8 @@
 ## 향후 페이지 구성
 HEADER → HERO → ABOUT(FAQ 포함) → SELECTED WORKS → CONTACT → FOOTER.
 - HEADER: Home / About / Works / Contact 앵커와 반응형 내비게이션.
-- HERO: 인물 사진 2장, Portfolio / ROH / SUJIN. 사진 전환 조건은 추후 결정.
-- Storytelling Portfolio 링크는 HERO와 FOOTER 모두 배치. URL은 미정.
+- HERO: 인물 사진 2장, Portfolio / ROH / SUJIN. 마우스 좌우 구역에 따라 사진을 전환한다. 터치 및 Reduced Motion은 첫 사진을 유지한다.
+- Storytelling Portfolio 링크는 HERO와 FOOTER 모두 배치. URL은 `src/data/profile.ts`에서 공통 관리한다.
 - ABOUT: 소개, 학력, 경력, 자격증, 스킬. 웹디자인개발기능사는 필기 합격으로 표기.
 - FAQ: 사진과 키보드 접근 가능한 아코디언. 답변은 미정.
 - 프로젝트 순서: 오늘도락, Simmons Global, 태극당, 광동제약, TOT, 72초.
@@ -31,6 +31,6 @@ HEADER → HERO → ABOUT(FAQ 포함) → SELECTED WORKS → CONTACT → FOOTER.
 
 ## 추후 결정
 - 실제 이미지와 대체 텍스트, 프로젝트 설명/역할/기여도/링크, FAQ 답변.
-- 섹션별 디자인 레퍼런스, Storytelling URL, Formspree ID, 배포 도메인.
+- 섹션별 디자인 레퍼런스, Formspree ID, 배포 도메인.
 - Vercel 배포 전 canonical, sitemap, Open Graph 이미지 확정.
 - SSG 도입 전 CSR 대비 장단점과 구현 난이도를 설명한다.

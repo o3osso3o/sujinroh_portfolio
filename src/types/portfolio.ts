@@ -25,3 +25,34 @@ export interface Project {
   process_url: string | null
   live_url: string | null
 }
+
+export interface ProfileEntry {
+  id: string
+  name: string
+  detail: string | null
+  date_label: string
+}
+
+export interface Skill {
+  name: string
+  text_mark: string
+  icon_src: string | null
+}
+
+export interface SkillGroup {
+  name: string
+  items: Skill[]
+}
+
+export interface FaqItem {
+  id: string
+  question: string
+  answer: string | null
+}
+
+export interface ProfileImage {
+  src: string
+  alt: string
+  width: number
+  height: number
+}

@@ -1,31 +1,32 @@
-.setup_page {
-  width: min(100% - var(--space_6) * 2, var(--content_max_width));
-  margin-inline: auto;
-  padding-block: clamp(4rem, 12vw, 10rem);
+.portfolio_page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
-.setup_label {
-  margin-bottom: var(--space_6);
-  color: var(--color_accent);
-  font-size: var(--font_size_small);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+.portfolio_main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
-.setup_page h1 {
-  font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.04em;
+.visually_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
-.setup_page h1 span {
-  display: block;
-}
-
-.setup_description {
-  max-width: 36rem;
-  margin-top: var(--space_8);
-  color: var(--color_text_secondary);
-  word-break: keep-all;
+/* Preserve the original first-screen height: 44px navigation + 16px padding. */
+.hero_viewport {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 3.75rem);
+  min-height: calc(100svh - 3.75rem);
 }

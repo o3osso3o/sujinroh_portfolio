@@ -1,0 +1,135 @@
+.about_section {
+  width: min(100% - 3rem, var(--content_max_width));
+  margin-inline: auto;
+  padding-block: clamp(5rem, 9vw, 9rem);
+  scroll-margin-top: var(--space_8);
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.about_intro { text-align: center; }
+.about_statement {
+  max-width: 60rem;
+  margin-inline: auto;
+  font-size: clamp(1.5rem, 2.3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.035em;
+}
+.about_description {
+  max-width: 38rem;
+  margin: var(--space_12) auto 0;
+  color: var(--color_text_secondary);
+  line-height: 1.9;
+}
+.about_profile_grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+  margin-top: clamp(4rem, 8vw, 8rem);
+}
+.about_column h3, .about_faq_content h3 {
+  margin-bottom: var(--space_6);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.about_entries, .about_skill_tiles {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.about_entries { display: grid; gap: var(--space_6); }
+.about_entries h4 {
+  font-size: var(--font_size_small);
+  font-weight: 600;
+  line-height: 1.6;
+}
+.about_detail { margin-top: var(--space_1); font-size: var(--font_size_small); }
+.about_date { margin-top: var(--space_1); color: var(--color_text_secondary); font-size: 0.8125rem; }
+.about_skill_groups { display: grid; gap: var(--space_6); }
+.about_skill_heading { font-size: var(--font_size_small); font-weight: 500; margin-bottom: var(--space_3); }
+.about_skill_tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space_4) var(--space_2); }
+.about_skill_tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space_2);
+  text-align: center;
+  color: var(--color_text_secondary);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.about_skill_mark {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color_border);
+  font-size: var(--font_size_small);
+  font-weight: 500;
+}
+.about_faq {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: clamp(3rem, 10vw, 10rem);
+  margin-top: clamp(5rem, 12vw, 12rem);
+}
+.about_faq_portrait { width: 100%; max-width: 22rem; justify-self: center; aspect-ratio: 4 / 5; }
+.about_faq_portrait img { width: 100%; height: 100%; object-fit: cover; }
+.about_photo_placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--color_border);
+  color: var(--color_text_secondary);
+  font-size: var(--font_size_small);
+}
+.about_faq_item { border-top: 1px solid var(--color_border); }
+.about_faq_item:last-child { border-bottom: 1px solid var(--color_border); }
+.about_faq_item h4 { margin: 0; }
+.about_faq_item button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space_4);
+  width: 100%;
+  min-height: 3.5rem;
+  padding: var(--space_4) var(--space_1);
+  border: 0;
+  background: transparent;
+  color: var(--color_text_primary);
+  font-size: var(--font_size_small);
+  font-weight: 500;
+  line-height: 1.7;
+  text-align: left;
+  cursor: pointer;
+}
+.about_faq_item button:hover, .about_faq_item button[aria-expanded='true'] { color: var(--color_accent); }
+.about_faq_indicator { flex-shrink: 0; font-size: 1.25rem; font-weight: 400; }
+.about_faq_panel { padding: 0 var(--space_1) var(--space_6); color: var(--color_text_secondary); font-size: var(--font_size_small); line-height: 1.8; }
+@media (prefers-reduced-motion: no-preference) {
+  .about_intro[data-revealed='true'] {
+    animation: about_intro_reveal 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .about_faq_panel:not([hidden]) { animation: about_answer_reveal 140ms ease-out; }
+  .about_faq_item button { transition: color 140ms ease-out; }
+}
+@keyframes about_intro_reveal {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes about_answer_reveal { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 68rem) {
+  .about_profile_grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space_12); }
+  .about_faq { gap: var(--space_12); }
+}
+@media (max-width: 40rem) {
+  .about_section { width: calc(100% - 2rem); }
+  .about_profile_grid { grid-template-columns: minmax(0, 1fr); }
+  .about_skill_tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .about_faq { grid-template-columns: minmax(0, 1fr); }
+  .about_faq_portrait { max-width: 18rem; }
+}
