@@ -48,7 +48,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section id="home" className="hero" ref={hero_ref} aria-labelledby="hero_title">
+    <section className="hero" ref={hero_ref} aria-labelledby="hero_title">
       <div className="hero_visual">
         <div className="hero_portrait" role="img" aria-label="야외에서 검은색 모자를 쓴 UX/UI 디자이너 노수진">
           <img className="hero_image hero_image_first" src={hero_01} alt="" width="720" height="880" fetchPriority="high" />
@@ -59,6 +59,13 @@ export default function Hero() {
           <p className="hero_name" aria-hidden="true"><span>ROH</span><span>SUJIN</span></p>
         </div>
       </div>
+    </section>
+  )
+}
+
+export function StorytellingLink() {
+  return (
+    <>
       {profile.storytelling_url && (
         <a className="storytelling_link" href={profile.storytelling_url} target="_blank" rel="noopener noreferrer">
           <span className="storytelling_dot" aria-hidden="true" />
@@ -66,6 +73,6 @@ export default function Hero() {
           <span className="visually_hidden"> (새 탭에서 열림)</span>
         </a>
       )}
-    </section>
+    </>
   )
 }

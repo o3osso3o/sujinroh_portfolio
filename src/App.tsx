@@ -1,6 +1,5 @@
 import Header from './components/Header/Header'
-import Hero from './components/Hero/Hero'
-import About from './components/About/About'
+import HeroAbout from './components/HeroAbout/HeroAbout'
 import './App.css'
 
 export default function App() {
@@ -8,8 +7,7 @@ export default function App() {
     <div className="portfolio_page">
       <Header />
       <main className="portfolio_main">
-        <div className="hero_viewport"><Hero /></div>
-        <About />
+        <HeroAbout />
       </main>
     </div>
   )

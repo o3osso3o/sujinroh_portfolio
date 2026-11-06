@@ -15,6 +15,7 @@
   width: min(100%, clamp(44rem, 46.875vw, 56.25rem), 112svh);
   aspect-ratio: 700 / 380;
   color: var(--color_accent);
+  transform-origin: top center;
 }
 
 .hero_portrait {

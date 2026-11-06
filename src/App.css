@@ -30,3 +30,45 @@
   min-height: calc(100vh - 3.75rem);
   min-height: calc(100svh - 3.75rem);
 }
+
+/* One entrance timeline on page load. Individual translate preserves the
+   portrait's existing horizontal centering and mouse interaction. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero_title {
+    animation: intro_rise 950ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+  }
+
+  .hero_name,
+  .hero_portrait {
+    animation: intro_reveal 650ms ease-out 850ms both;
+  }
+
+  .site_header,
+  .storytelling_link {
+    animation: intro_reveal 650ms ease-out 1700ms both;
+  }
+}
+
+@keyframes intro_rise {
+  from {
+    opacity: 0;
+    translate: 0 4rem;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    visibility: visible;
+  }
+}
+
+@keyframes intro_reveal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}

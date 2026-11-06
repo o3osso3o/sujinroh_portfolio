@@ -1,10 +1,10 @@
-import { Fragment, useEffect, useRef } from 'react'
+import { Fragment } from 'react'
 import { certification, education, introduction, skill_groups, work } from '../../data/about'
 import type { ProfileEntry } from '../../types/portfolio'
 import Faq from './Faq'
 import './About.css'
 
-function ProfileColumn({ title, entries }: { title: string; entries: ProfileEntry[] }) {
+function ProfileColumn({ title, entries, stacked_detail = false }: { title: string; entries: ProfileEntry[]; stacked_detail?: boolean }) {
   return (
     <div className="about_column">
       <h3>{title}</h3>
@@ -12,8 +12,11 @@ function ProfileColumn({ title, entries }: { title: string; entries: ProfileEntr
         {entries.map((entry) => (
           <li key={entry.id}>
             <h4>{entry.name}</h4>
-            {entry.detail && <p className="about_detail">{entry.detail}</p>}
-            <p className="about_date">{entry.date_label}</p>
+            {stacked_detail && entry.detail && <p className="about_detail">{entry.detail}</p>}
+            <p className="about_date">
+              {!stacked_detail && entry.detail && <>{entry.detail}<span className="about_meta_separator"> | </span></>}
+              <span>{entry.date_label}</span>
+            </p>
           </li>
         ))}
       </ul>
@@ -21,43 +24,32 @@ function ProfileColumn({ title, entries }: { title: string; entries: ProfileEntr
   )
 }
 
+export function AboutIntro() {
+  return (
+    <div className="about_intro">
+      <h2 id="about_title" className="about_statement">{introduction.heading}</h2>
+      <p className="about_description">
+        {introduction.description.split('\n').map((line, line_index) => (
+          <Fragment key={line}>
+            {line_index > 0 && <br />}
+            {line}
+          </Fragment>
+        ))}
+      </p>
+    </div>
+  )
+}
+
 export default function About() {
-  const intro_ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const intro_element = intro_ref.current
-    if (!intro_element || !('IntersectionObserver' in window)) return
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        intro_element.dataset.revealed = 'true'
-        observer.disconnect()
-      }
-    }, { threshold: 0.15 })
-
-    observer.observe(intro_element)
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <section id="about" className="about_section" aria-labelledby="about_title">
-      <div className="about_intro" ref={intro_ref}>
-        <h2 id="about_title" className="about_statement">{introduction.heading}</h2>
-        <p className="about_description">
-          {introduction.description.split('\n').map((line, line_index) => (
-            <Fragment key={line}>
-              {line_index > 0 && <br />}
-              {line}
-            </Fragment>
-          ))}
-        </p>
-      </div>
+      <div className="about_intro_hold"><AboutIntro /></div>
       <div className="about_profile_grid">
-        <ProfileColumn title="EDUCATION" entries={education} />
-        <ProfileColumn title="WORK" entries={work} />
-        <ProfileColumn title="CERTIFICATION" entries={certification} />
+        <ProfileColumn title="Education" entries={education} stacked_detail />
+        <ProfileColumn title="Work" entries={work} />
+        <ProfileColumn title="Certification" entries={certification} />
         <div className="about_column">
-          <h3>SKILLS</h3>
+          <h3>Skills</h3>
           <div className="about_skill_groups">
             {skill_groups.map((group) => (
               <div key={group.name}>

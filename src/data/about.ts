@@ -1,13 +1,13 @@
 import type { FaqItem, ProfileEntry, ProfileImage, SkillGroup } from '../types/portfolio'
 
 export const introduction = {
-  heading: '팀의 흐름을 읽고, 유연하게 움직이는 디자이너, 노수진입니다.',
+  heading: '팀의 흐름을 읽고 유연하게 움직이는 디자이너, 노수진입니다.',
   description: '다양한 경험을 통해 사람과 브랜드가 만나는 순간에 관심을 갖게 되었습니다.\n사용자의 시선에서 고민하고, 팀과 함께 더 나은 경험을 만들어가고자 합니다.',
 }
 
 export const education: ProfileEntry[] = [
   { id: 'ezen', name: '이젠아카데미DX교육센터', detail: 'UXUI디자인&웹기획 프론트엔드 부트캠프', date_label: '2025.12 – 2026.06' },
-  { id: 'kaywon', name: '계원예술대학교', detail: '영상디자인과', date_label: '2013.03 – 2016.02' },
+  { id: 'kaywon', name: '계원예술대학교 – 영상디자인과', detail: null, date_label: '2013.03 – 2016.02' },
 ]
 
 export const work: ProfileEntry[] = [
@@ -19,10 +19,10 @@ export const work: ProfileEntry[] = [
 ]
 
 export const certification: ProfileEntry[] = [
-  { id: 'web-design', name: '웹디자인개발기능사', detail: '필기 합격', date_label: '2026.01' },
-  { id: 'csp', name: 'CSP Barista Skills Foundation', detail: null, date_label: '2020.06' },
-  { id: 'barista', name: '바리스타 자격증 2급', detail: null, date_label: '2020.03' },
-  { id: 'driving', name: '운전면허 2종 보통', detail: null, date_label: '2014.08' },
+  { id: 'web-design', name: '웹디자인개발기능사 (필기합격)', detail: '기능사', date_label: '2026.01' },
+  { id: 'csp', name: 'CSP Barista Skills (국제자격증)', detail: 'Foundation', date_label: '2020.06' },
+  { id: 'barista', name: '바리스타 자격증', detail: '2급', date_label: '2020.03' },
+  { id: 'driving', name: '운전면허자격증', detail: '2종 보통', date_label: '2014.08' },
 ]
 
 // Text marks are placeholders, not brand logos. Add approved local icon paths later.

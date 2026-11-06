@@ -1,0 +1,70 @@
+.hero_about_sequence {
+  --scene_height: calc(100svh - 3.75rem);
+  --hero_y: 0px;
+  --hero_scale: 1;
+  position: relative;
+}
+
+.hero_scroll_track { position: relative; scroll-margin-top: 3.75rem; }
+.hero_scroll_scene { min-height: var(--scene_height); }
+.hero_storytelling_slot {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: var(--scene_height);
+  pointer-events: none;
+}
+.hero_storytelling_slot a { pointer-events: auto; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero_about_sequence[data-scroll-enabled='true'] {
+    padding-top: var(--scene_height);
+  }
+  .hero_about_sequence[data-scroll-enabled='true'] .about_section {
+    scroll-margin-top: var(--about_anchor_offset);
+  }
+  .hero_about_sequence[data-scroll-enabled='true'] .about_profile_grid {
+    margin-top: var(--profile_gap);
+  }
+  html.hero_intro_snap {
+    scroll-snap-type: y proximity;
+  }
+  html.hero_intro_snap .about_intro_hold {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: var(--intro_snap_top);
+  }
+  .hero_about_sequence[data-scroll-enabled='true'] .about_intro_hold {
+    height: var(--intro_hold_height);
+  }
+  html.hero_intro_snap .about_intro {
+    position: sticky;
+    top: var(--intro_snap_top);
+  }
+  .hero_about_sequence[data-scroll-enabled='true'] .hero_scroll_track {
+    position: absolute;
+    inset: 0 0 auto;
+    height: var(--track_height);
+    pointer-events: none;
+  }
+  .hero_about_sequence[data-scroll-enabled='true'] .hero_scroll_scene {
+    position: sticky;
+    top: 0;
+    height: var(--scene_height);
+    z-index: 1;
+  }
+  /* Text scrolls behind the pinned visual, without changing its opacity. */
+  .hero_about_sequence[data-scroll-enabled='true'] .hero_scroll_scene::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: var(--hero_cover_height, 0px);
+    background: var(--color_background);
+  }
+  .hero_about_sequence[data-scroll-enabled='true'] .hero_visual {
+    transform: translateY(var(--hero_y)) scale(var(--hero_scale));
+    transform-origin: top center;
+    will-change: transform;
+    pointer-events: auto;
+  }
+}
