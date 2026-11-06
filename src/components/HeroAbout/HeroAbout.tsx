@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
-import Hero, { StorytellingLink } from '../Hero/Hero'
+import Hero from '../Hero/Hero'
 import About from '../About/About'
 import { create_intro_snap, create_scroll_timeline, get_scroll_state } from './scroll_timeline'
 import './HeroAbout.css'
@@ -97,7 +97,6 @@ export default function HeroAbout() {
         <div className="hero_scroll_scene">
           <div className="hero_viewport"><Hero /></div>
         </div>
-        <div className="hero_storytelling_slot"><StorytellingLink /></div>
       </div>
       <About />
     </div>

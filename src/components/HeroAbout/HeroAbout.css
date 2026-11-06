@@ -7,14 +7,6 @@
 
 .hero_scroll_track { position: relative; scroll-margin-top: 3.75rem; }
 .hero_scroll_scene { min-height: var(--scene_height); }
-.hero_storytelling_slot {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: var(--scene_height);
-  pointer-events: none;
-}
-.hero_storytelling_slot a { pointer-events: auto; }
 
 @media (prefers-reduced-motion: no-preference) {
   .hero_about_sequence[data-scroll-enabled='true'] {

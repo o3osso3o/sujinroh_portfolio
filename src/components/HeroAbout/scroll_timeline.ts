@@ -12,8 +12,8 @@ export function create_scroll_timeline(
   const initial_top = (scene_height - visual_height) / 2
   const pinned_top = viewport_height * 0.05
   const move_end = Math.max(0, initial_top - pinned_top)
-  // Keep a 20px gap while the rising profile pushes the hero to half size.
-  const shrink_start = Math.max(move_end, profile_top - pinned_top - visual_height - 20)
+  // Keep a 40px gap while the rising profile pushes the hero to half size.
+  const shrink_start = Math.max(move_end, profile_top - pinned_top - visual_height - 80)
   const shrink_end = shrink_start + visual_height * 0.5
   const release_start = shrink_end
   return {

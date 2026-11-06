@@ -60,17 +60,51 @@
 .about_meta_separator { white-space: pre; }
 .about_skill_groups { display: grid; gap: var(--space_6); }
 .about_skill_heading { font-size: var(--font_size_small); font-weight: 500; margin-bottom: var(--space_3); }
-.about_skill_tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space_4) var(--space_2); }
-.about_skill_tile {
+.about_skill_tiles {
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
   align-items: center;
   gap: var(--space_2);
-  text-align: center;
-  color: var(--color_text_secondary);
+}
+.about_skill_tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 1.75rem;
+  height: 1.75rem;
+}
+.about_skill_tile img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 12%));
+}
+.about_skill_label {
+  position: absolute;
+  z-index: 3;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  padding: var(--space_1) var(--space_2);
+  border-radius: 0.25rem;
+  background: var(--color_text_primary);
+  color: var(--color_background);
   font-size: 0.75rem;
   line-height: 1.5;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 140ms ease;
 }
+.about_skill_tile:hover .about_skill_label,
+.about_skill_tile:focus .about_skill_label {
+  opacity: 1;
+  visibility: visible;
+}
+.about_skill_tile:first-child .about_skill_label { left: 0; transform: none; }
+.about_skill_tile:last-child .about_skill_label { left: auto; right: 0; transform: none; }
 .about_skill_mark {
   display: grid;
   place-items: center;
@@ -85,7 +119,7 @@
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr);
   align-items: center;
   gap: clamp(3rem, 10vw, 10rem);
-  margin-top: clamp(5rem, 12vw, 12rem);
+  margin-top: clamp(7rem, 16vw, 16rem);
 }
 .about_faq_portrait { width: 100%; max-width: 22rem; justify-self: center; aspect-ratio: 4 / 5; }
 .about_faq_portrait img { width: 100%; height: 100%; object-fit: cover; }
@@ -121,6 +155,7 @@
 .about_faq_item button:hover, .about_faq_item button[aria-expanded='true'] { color: var(--color_accent); }
 .about_faq_indicator { flex-shrink: 0; font-size: 1.25rem; font-weight: 400; }
 .about_faq_panel { padding: 0 var(--space_1) var(--space_6); color: var(--color_text_secondary); font-size: var(--font_size_small); line-height: 1.8; }
+.about_faq_panel p { min-height: 4lh; }
 @media (prefers-reduced-motion: no-preference) {
   .about_faq_panel:not([hidden]) { animation: about_answer_reveal 140ms ease-out; }
   .about_faq_item button { transition: color 140ms ease-out; }
@@ -133,7 +168,6 @@
 @media (max-width: 40rem) {
   .about_section { width: calc(100% - 2rem); }
   .about_profile_grid { grid-template-columns: minmax(0, 1fr); }
-  .about_skill_tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .about_faq { grid-template-columns: minmax(0, 1fr); }
   .about_faq_portrait { max-width: 18rem; }
 }

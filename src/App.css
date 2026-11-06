@@ -11,6 +11,32 @@
   flex-direction: column;
 }
 
+.header_slot { height: 3.75rem; flex-shrink: 0; }
+.portfolio_page .site_header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  background: var(--color_background);
+}
+.portfolio_page > .storytelling_link {
+  position: fixed;
+  z-index: 20;
+}
+.site_header,
+.storytelling_link {
+  transition: transform 220ms ease, filter 220ms ease;
+}
+.portfolio_page[data-controls-hidden='true'] .site_header {
+  transform: translateY(-100%);
+  filter: opacity(0);
+  pointer-events: none;
+}
+.portfolio_page[data-controls-hidden='true'] > .storytelling_link {
+  transform: translateY(calc(100% + 3rem));
+  filter: opacity(0);
+  pointer-events: none;
+}
+
 .visually_hidden {
   position: absolute;
   width: 1px;

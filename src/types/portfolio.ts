@@ -13,17 +13,31 @@ export interface Contribution {
 
 export interface Project {
   id: string
+  order: number
   name: string
+  subtitle: string
   project_type: string | null
   presentation: 'modal' | 'external'
   summary: string | null
+  description: string | null
   keywords: string[]
   my_role: string | null
   contribution: Contribution | null
   tools: string[]
-  image: { src: string; alt: string; width: number; height: number } | null
+  thumbnail: ProjectImage | null
+  image: ProjectImage | null
   process_url: string | null
   live_url: string | null
+  external_url: string | null
+}
+
+export interface ProjectImage {
+  src: string
+  alt: string
+  width: number
+  height: number
+  fit?: 'contain' | 'cover'
+  position?: string
 }
 
 export interface ProfileEntry {

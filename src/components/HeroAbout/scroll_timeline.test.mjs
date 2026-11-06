@@ -31,18 +31,18 @@ for (const [label, viewport_height, visual_height] of [
     assert.ok(move_end <= shrink_start && shrink_start < shrink_end && shrink_end <= release_start)
     assert.equal(get_scroll_state(timeline, shrink_start - 1).hero_scale, 1)
     assert.ok(get_scroll_state(timeline, shrink_start + 1).hero_scale < 1)
-    // Preserve 20px throughout the shrink and release exactly at half size.
+    // Preserve 40px throughout the shrink and release exactly at half size.
     assert.equal(release_start, shrink_end)
     for (const progress of [0, 0.25, 0.5, 0.75, 1]) {
       const position = shrink_start + (shrink_end - shrink_start) * progress
-      assert.ok(Math.abs(profile_top - position - get_scroll_state(timeline, position).hero_bottom - 20) < 0.001)
+      assert.ok(Math.abs(profile_top - position - get_scroll_state(timeline, position).hero_bottom - 40) < 0.001)
     }
     assert.equal(get_scroll_state(timeline, shrink_start).hero_scale, 1)
     assert.ok(Math.abs(get_scroll_state(timeline, (shrink_start + shrink_end) / 2).hero_scale - 0.75) < 1e-12)
     assert.equal(get_scroll_state(timeline, shrink_end).hero_scale, 0.5)
     assert.equal(get_scroll_state(timeline, release_start + 1000).hero_scale, 0.5)
     // Reduced spacing brings the profile in before the hero starts shrinking.
-    assert.ok(Math.abs(profile_top - shrink_start - (viewport_height * 0.05 + visual_height + 20)) < 0.001)
+    assert.ok(Math.abs(profile_top - shrink_start - (viewport_height * 0.05 + visual_height + 40)) < 0.001)
     assert.ok(profile_top - (shrink_start + shrink_end) / 2 < viewport_height)
     assert.ok(Math.abs(get_scroll_state(timeline, shrink_end).hero_bottom - (viewport_height * 0.05 + visual_height * 0.5)) < 0.001)
     assert.ok(Math.abs(timeline.track_height - scene_height - release_start) < 0.001)
@@ -50,7 +50,7 @@ for (const [label, viewport_height, visual_height] of [
     for (const extra_scroll of [0, 1, 100, 500]) {
       const position = release_start + extra_scroll
       const hero_bottom = get_scroll_state(timeline, position).hero_bottom - extra_scroll
-      assert.ok(Math.abs(profile_top - position - hero_bottom - 20) < 0.001)
+      assert.ok(Math.abs(profile_top - position - hero_bottom - 40) < 0.001)
     }
     const positions = [0, move_end, shrink_start, shrink_end, release_start]
     const forward = positions.map((position) => get_scroll_state(timeline, position))

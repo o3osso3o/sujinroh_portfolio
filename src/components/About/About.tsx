@@ -56,13 +56,13 @@ export default function About() {
                 <h4 className="about_skill_heading">{group.name}</h4>
                 <ul className="about_skill_tiles">
                   {group.items.map((skill) => (
-                    <li className="about_skill_tile" key={skill.name}>
+                    <li className="about_skill_tile" key={skill.name} tabIndex={0} aria-label={skill.name}>
                       {skill.icon_src ? (
                         <img src={skill.icon_src} alt="" width="24" height="24" loading="lazy" />
                       ) : (
                         <span className="about_skill_mark" aria-hidden="true">{skill.text_mark}</span>
                       )}
-                      <span>{skill.name}</span>
+                      <span className="about_skill_label" aria-hidden="true">{skill.name}</span>
                     </li>
                   ))}
                 </ul>

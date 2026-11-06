@@ -3,7 +3,7 @@ import './Header.css'
 const navigation_items = [
   { label: 'Home', href: '#home', available: true },
   { label: 'About', href: '#about', available: true },
-  { label: 'Works', href: '#works', available: false },
+  { label: 'Works', href: '#works', available: true },
   { label: 'Contact', href: '#contact', available: false },
 ]
 
