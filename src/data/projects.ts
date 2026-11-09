@@ -96,5 +96,7 @@ export const projects: Project[] = [
       { label: 'Design', items: ['Figma','Adobe Illustrator'] },
       { label: 'AI', items: ['ChatGPT'] },
     ],},
-  { ...pending_details, id: 'ad', thumbnail: { src: art_department_thumbnail, alt: '붓과 Art Department 문구', width: 400, height: 300 }, order: 6, name: '72초', subtitle: '72seconds', project_type: 'Art Department', presentation: 'external' },
+  { ...pending_details, id: 'ad', thumbnail: { src: art_department_thumbnail, alt: '붓과 Art Department 문구', width: 400, height: 300 }, order: 6, name: '영상미술', subtitle: '72seconds', project_type: 'Art Department', presentation: 'external' ,external_url: 'https://www.youtube.com/@72tv21', keywords: ['Art Department', 'Video Production'],
+    summary: '촬영 현장 미술팀에서 다양한 영상 콘텐츠의 미술과 소품을 제작하며 시각적으로 구현'
+  ,},
 ]
