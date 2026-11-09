@@ -3,6 +3,14 @@ import { createPortal } from 'react-dom'
 import type { Project } from '../../types/portfolio'
 import ProjectVisual from './ProjectVisual'
 
+function ActionArrow() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      <path d="M7 17 17 7M7 7h10v10" />
+    </svg>
+  )
+}
+
 export default function ProjectModal({ project, on_close }: { project: Project; on_close: () => void }) {
   const dialog_ref = useRef<HTMLDialogElement>(null)
   const close_ref = useRef<HTMLButtonElement>(null)
@@ -40,21 +48,37 @@ export default function ProjectModal({ project, on_close }: { project: Project; 
       onPointerDown={(event) => { backdrop_press.current = event.target === event.currentTarget }}
       onClick={(event) => { if (backdrop_press.current && event.target === event.currentTarget) request_close(); backdrop_press.current = false }}>
       <div className="works_modal_surface">
-        <div className="works_modal_top"><span>PROJECT {String(project.order).padStart(2, '0')}</span><button ref={close_ref} type="button" onClick={request_close} aria-label="프로젝트 상세 닫기">닫기 <span aria-hidden="true">×</span></button></div>
-        <ProjectVisual image={project.image ?? project.thumbnail} title={project.name} />
+        <div className="works_modal_top"><span>PROJECT {String(project.order).padStart(2, '0')}</span><button ref={close_ref} type="button" onClick={request_close} aria-label="프로젝트 상세 닫기"><span aria-hidden="true">×</span></button></div>
         <div className="works_modal_content">
-          <header><p className="works_eyebrow">{project.subtitle}</p><h2 id="works_modal_title">{project.name}</h2></header>
-          <section><h3>Description</h3><p>{project.description ?? project.summary ?? '프로젝트 소개 준비 중입니다.'}</p></section>
-          <section><h3>Keywords</h3><p>{project.keywords.length ? project.keywords.join(' · ') : '키워드 준비 중입니다.'}</p></section>
-          <section><h3>My Role</h3><p>{project.my_role ?? '담당 역할 준비 중입니다.'}</p></section>
-          <section><h3>Contribution</h3><dl className="works_contribution">
-            {(['planning', 'design', 'development'] as const).map((key) => <div key={key}><dt>{key.charAt(0).toUpperCase() + key.slice(1)}</dt><dd>{project.contribution?.[key] == null ? '확인 중' : `${project.contribution[key]}%`}</dd></div>)}
+          <div className="works_modal_media">
+          <ProjectVisual image={project.image ?? project.thumbnail} title={project.name} />
+          <div className="works_modal_actions">
+            {[
+              { label: 'VIEW PROCESS', url: project.process_url },
+              { label: 'VIEW LIVE', url: project.live_url },
+            ].map(({ label, url }) => url ? (
+              <a key={label} href={url} target="_blank" rel="noopener noreferrer">{label}<ActionArrow /><span className="visually_hidden"> (새 탭)</span></a>
+            ) : (
+              <button key={label} type="button" disabled aria-label={`${label} (링크 준비 중)`} title="링크 준비 중">{label}<ActionArrow /></button>
+            ))}
+          </div>
+          </div>
+          <div className="works_modal_intro">
+          <header>
+            <div className="works_modal_labels"><span className="works_eyebrow">SELECTED PROJECT</span>{[project.project_type, ...project.keywords].filter(Boolean).map((label) => <span className="works_modal_tag" key={label}>{label}</span>)}</div>
+            <h2 id="works_modal_title">{project.name}</h2>
+            <p className="works_modal_subtitle">{project.subtitle}</p>
+          </header>
+          <p className="works_modal_description">{project.description ?? project.summary ?? '프로젝트 소개 준비 중입니다.'}</p>
+          </div>
+          <section className="works_modal_role"><h3>ROLE</h3><p>{project.my_role ?? '담당 역할 준비 중입니다.'}</p></section>
+          <section className="works_modal_tools"><h3 className="visually_hidden">TOOLS</h3>{project.tool_groups?.length ? <dl className="works_tool_groups">
+            {project.tool_groups.map((group) => <div key={group.label}><dt>{group.label}</dt><dd>{group.items.join(', ')}</dd></div>)}
+          </dl> : <p>{project.tools.length ? project.tools.join(' · ') : '사용 도구 준비 중입니다.'}</p>}</section>
+          <section className="works_modal_contribution"><h3>CONTRIBUTION</h3><dl className="works_contribution">
+            {(['planning', 'design', 'development'] as const).map((key) => <div key={key}><dt>{key.charAt(0).toUpperCase() + key.slice(1)}</dt><dd>{project.contribution?.[key] == null ? '확인 중' : `${project.contribution[key]}%`}</dd>{project.contribution?.[key] != null && <span className="works_contribution_track" aria-hidden="true"><span style={{ width: `${project.contribution[key]}%` }} /></span>}</div>)}
           </dl></section>
-          <section><h3>Tools &amp; Technologies</h3><p>{project.tools.length ? project.tools.join(' · ') : '사용 도구 준비 중입니다.'}</p></section>
-          {(project.process_url || project.live_url) && <div className="works_modal_actions">
-            {project.process_url && <a href={project.process_url} target="_blank" rel="noopener noreferrer">View Process <span aria-hidden="true">↗</span><span className="visually_hidden"> (새 탭)</span></a>}
-            {project.live_url && <a href={project.live_url} target="_blank" rel="noopener noreferrer">View Live <span aria-hidden="true">↗</span><span className="visually_hidden"> (새 탭)</span></a>}
-          </div>}
+
         </div>
       </div>
     </dialog>, document.body,

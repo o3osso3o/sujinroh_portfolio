@@ -23,6 +23,7 @@ export interface Project {
   keywords: string[]
   my_role: string | null
   contribution: Contribution | null
+  tool_groups?: { label: string; items: string[] }[]
   tools: string[]
   thumbnail: ProjectImage | null
   image: ProjectImage | null
