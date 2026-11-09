@@ -38,8 +38,8 @@ export const projects: Project[] = [
       { label: 'AI', items: ['ChatGPT', 'Codex', 'Claude','Midjourney','OpenAI API'] },
       { label: 'Tools', items: ['VS Code', 'Git', 'GitHub', 'Vercel'] },
     ], },
-  { ...pending_details, id: 'sm', thumbnail: { src: simmons_thumbnail, alt: '시몬스 침대와 SIMMONS 로고', width: 400, height: 300 }, order: 2, name: '시몬스', subtitle: 'Simmons Global', presentation: 'modal'  ,
-    project_type: 'SIMMONS Global Website',
+  { ...pending_details, id: 'sm', thumbnail: { src: simmons_thumbnail, alt: '시몬스 침대와 SIMMONS 로고', width: 400, height: 300 }, order: 2, name: '시몬스', subtitle: 'SIMMONS - Global Website Renewal', presentation: 'modal'  ,
+    project_type: 'Global Website Renewal',
     live_url: 'https://hyunjireal.github.io/resimmons/',
     keywords: ['Brand Experience', 'Non-commerce'],
     summary: '글로벌 사용자를 대상으로 시몬스의 브랜드 헤리티지와 기술력을 전달하고, 온라인 브랜드 경험을 오프라인 매장 방문으로 연결하도록 설계한 비커머스 웹사이트 프로젝트',
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     project_type: 'Website Renewal',
     live_url: 'https://tae01.vercel.app/',
     keywords: ['Brand Experience', 'UX/UI'],
-    summary: '태극당의 80년 헤리티지와 브랜드 정체성을 현대적인 웹 경험으로 재해석하고, 신문형 레이아웃과 스토리텔링 콘텐츠를 통해 브랜드의 이야기를 새롭게 전달한 웹사이트 리뉴얼 프로젝트',
+    summary: '태극당의 80년 헤리티지와 브랜드 정체성을 신문형 레이아웃에 담아 현대적인 웹 경험으로 재해석한 리뉴얼 프로젝트',
     description: '태극당의 80년 헤리티지와 브랜드 정체성을 현대적인 웹 경험으로 재해석하고, 신문형 레이아웃과 스토리텔링 콘텐츠를 통해 브랜드의 이야기를 새롭게 전달한 웹사이트 리뉴얼 프로젝트입니다.',
     my_role: '브랜드 및 UX 분석 · 메인 비주얼 레이아웃 디자인 · 연혁 페이지 UI 디자인 · 콘텐츠 기획 · 웹 구현',
     contribution: { planning: 25, design: 25, development: 25 },
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     project_type: 'Web Renewal',
     live_url: 'https://o3osso3o.github.io/kwangdong/',
     keywords: ['UX/UI', 'Personal Project'],
-    summary: '정보 구조와 제품 탐색 과정을 개선한 웹사이트 리뉴얼',
+    summary: '기존 웹사이트의 복잡한 정보 구조와 제품 탐색 과정을 개선해, 사용자가 필요한 정보를 쉽고 빠르게 찾을 수 있도록 설계한 웹사이트 리뉴얼 프로젝트',
     description: '기존 웹사이트의 복잡한 정보 구조와 제품 탐색 과정을 개선하고, 사용자가 필요한 정보를 더 빠르게 찾을 수 있도록 설계한 웹사이트 리뉴얼 프로젝트입니다.',
     my_role: 'UX 구조 분석 · IA 재정리 · UI 디자인 · 인터랙션 구현',
     contribution: { planning: 100, design: 100, development: 100 },
@@ -97,6 +97,6 @@ export const projects: Project[] = [
       { label: 'AI', items: ['ChatGPT'] },
     ],},
   { ...pending_details, id: 'ad', thumbnail: { src: art_department_thumbnail, alt: '붓과 Art Department 문구', width: 400, height: 300 }, order: 6, name: '영상미술', subtitle: '72seconds', project_type: 'Art Department', presentation: 'external' ,external_url: 'https://www.youtube.com/@72tv21', keywords: ['Art Department', 'Video Production'],
-    summary: '촬영 현장 미술팀에서 다양한 영상 콘텐츠의 미술과 소품을 제작하며 시각적으로 구현'
+    summary: '촬영 현장 미술팀에서 다양한 영상 콘텐츠의 소품과 세트를 디자인·제작하고, 콘셉트에 맞는 장면을 시각적으로 구현한 영상미술 프로젝트'
   ,},
 ]

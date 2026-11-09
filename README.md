@@ -103,3 +103,23 @@ ESLint, TypeScript, 프로덕션 빌드 통과. 연결 가능한 브라우저가
 추후 필요한 자료: FAQ 사진(파일명, 대체 텍스트), 네 질문의 최종 답변, 사용 가능한 스킬 로고 자산. 현재 사진은 명시적 빈 영역, 답변은 ‘답변 준비 중입니다.’, 스킬은 로고가 아닌 텍스트 약자로 표시합니다.
 
 검증: ESLint, TypeScript, 프로덕션 빌드 통과. 실제 브라우저 검수는 미완료입니다. `npm run dev` 후 1440px / 768px / 375px에서 열 재배치, 가로 넘침, About 메뉴 이동, Tab 및 Enter/Space로 FAQ 동작을 확인하세요.
+
+## CONTACT / Formspree 설정
+
+1. Formspree 대시보드에서 폼을 만들고 수신 이메일 인증을 완료합니다.
+2. `.env.example`을 참고해 프로젝트 루트에 `.env.local`을 만들고, 대시보드의 실제 endpoint를 `VITE_FORMSPREE_ENDPOINT` 값으로 입력합니다. 주소는 `https://formspree.io/f/` 뒤에 실제 폼 ID가 오는 형식입니다.
+3. 개발 서버를 재시작합니다. 배포 환경에도 같은 환경변수를 등록한 뒤 다시 빌드/배포합니다. Vite 환경변수는 빌드 시 포함됩니다.
+
+값이 비어 있거나 올바른 Formspree 주소가 아니면 제출 버튼은 비활성화됩니다. 개발 환경에는 설정 안내가 표시되고, 방문자에게는 이메일 문의를 안내합니다. 이 endpoint는 공개 폼 주소이며 API 비밀키를 입력하지 않습니다. `.env.local`은 Git에서 제외됩니다.
+
+폼은 추가 라이브러리 없이 JSON POST와 `Accept: application/json`으로 전송합니다. 필수/이메일 검증, 요청 중 잠금, 20초 시간 제한, 성공 시 초기화, 실패 시 입력 유지 및 재시도를 지원합니다.
+공식 참고: https://formspree.io/blog/type-safe-form-pipeline/
+
+### 확인 방법
+
+- `npm run build`, `npm run lint`
+- `node --experimental-strip-types --test src/components/Contact/contact_form.test.mjs` (Node의 TypeScript stripping 지원 필요)
+- 실제 endpoint 연결 후: 실제 이메일 수신, 제출 중 연속 클릭 차단, 성공 시 초기화, 실패/오프라인 시 입력 유지 및 재시도.
+- 브라우저: 데스크톱 2열/태블릿·모바일 1열, Tab 탐색·오류 필드 포커스, 스크린리더 상태 안내, Reduced Motion에서 등장 효과 및 Back to Top, 기존 HERO 스크롤 동작.
+
+CONTACT와 Footer는 `src/data/profile.ts`의 공통 이메일/Storytelling URL을 재사용합니다. Back to Top은 `#home`으로 키보드 포커스를 이동하고 최상단으로 스크롤합니다.

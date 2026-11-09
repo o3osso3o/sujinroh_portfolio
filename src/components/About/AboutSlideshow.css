@@ -1,0 +1,24 @@
+.about_slideshow { width: 100%; max-width: 472px; min-width: 0; padding: 48px 0 0 52px; justify-self: center; align-self: start; }
+.about_slide_stage { position: relative; width: 100%; margin-bottom: 72px; }
+.about_slide_frame { position: relative; width: 100%; aspect-ratio: 420 / 400; border: 1px solid #000; background: #fff; overflow: hidden; }
+.about_slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.about_slide[data-active='true'] { opacity: 1; }
+.about_slide img { width: 100%; height: 100%; object-fit: cover; }
+.about_slide_placeholder { display: grid; place-items: center; width: 100%; height: 100%; color: #555; font-size: var(--font_size_small); }
+.about_slide_letter { position: absolute; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #000; border-radius: 50%; background: #fff; color: #000; font-size: 14px; line-height: 1; transform: translate(-50%, -50%); cursor: pointer; }
+.about_slide_letter[aria-pressed='true'] { background: #c92e0c; color: #fff; }
+.about_slide_letter[data-letter='A'] { left: -30px; top: 35%; }
+.about_slide_letter[data-letter='B'] { left: 0; top: 15%; }
+.about_slide_letter[data-letter='O'] { left: 13%; top: 0; }
+.about_slide_letter[data-letter='U'] { left: 32%; top: -12px; }
+.about_slide_letter[data-letter='T'] { left: 52%; top: -24px; }
+.about_slide_letter[data-letter='M'] { left: 81%; top: calc(100% + 48px); }
+.about_slide_letter[data-letter='E'] { left: calc(100% - 22px); top: calc(100% + 44px); }
+.about_slide_pause { min-height: 44px; padding: 0; border: 0; background: transparent; color: #555; font-size: 12px; text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) { .about_slide { transition: opacity 400ms ease; } }
+@media (max-width: 40rem) {
+  .about_slide_letter[data-letter='O'] { left: 15%; }
+  .about_slide_letter[data-letter='U'] { left: 40%; }
+  .about_slide_letter[data-letter='T'] { left: 65%; }
+  .about_slide_letter[data-letter='M'] { left: calc(100% - 80px); }
+}

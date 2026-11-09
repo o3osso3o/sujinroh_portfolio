@@ -3,6 +3,7 @@ import { projects } from '../../data/projects'
 import type { Project } from '../../types/portfolio'
 import ProjectVisual from './ProjectVisual'
 import ProjectModal from './ProjectModal'
+import ActionArrow from './ActionArrow'
 import './Works.css'
 
 export default function Works() {
@@ -43,7 +44,7 @@ export default function Works() {
             <span className="works_card_details">
               <span>{project.summary ?? (external ? '영상 프로덕션 · 미술팀 경력' : '프로젝트 소개 준비 중')}</span>
               <span className="works_keywords">{project.keywords.length ? project.keywords.join(' · ') : '키워드 준비 중'}</span>
-              <span className="works_card_action">{external ? (project.external_url ? 'YouTube에서 보기' : 'YouTube 링크 준비 중') : '상세 보기'} <span aria-hidden="true">↗</span></span>
+              <span className="works_card_action">{external ? (project.external_url ? 'YouTube에서 보기' : 'YouTube 링크 준비 중') : '상세 보기'} <ActionArrow /></span>
             </span>
           </>
           return (

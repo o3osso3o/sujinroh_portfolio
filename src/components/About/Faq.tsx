@@ -1,18 +1,14 @@
 import { useState } from 'react'
-import { faq_image, faq_items, faq_pending_answer } from '../../data/about'
+import AboutSlideshow from './AboutSlideshow'
+import { faq_items, faq_pending_answer } from '../../data/about'
 
 export default function Faq() {
   const [open_id, set_open_id] = useState<string | null>(faq_items[0]?.id ?? null)
 
   return (
     <div className="about_faq">
-      <div className="about_faq_portrait">
-        {faq_image ? (
-          <img src={faq_image.src} alt={faq_image.alt} width={faq_image.width} height={faq_image.height} loading="lazy" />
-        ) : (
-          <div className="about_photo_placeholder">사진 준비 중</div>
-        )}
-      </div>
+      <AboutSlideshow />
+      <div className="about_faq_shell">
       <section className="about_faq_content" aria-labelledby="about_faq_title">
         <h3 id="about_faq_title">FAQ</h3>
         <div className="about_faq_items">
@@ -37,6 +33,7 @@ export default function Faq() {
           })}
         </div>
       </section>
+      </div>
     </div>
   )
 }

@@ -3,6 +3,8 @@ import Header from './components/Header/Header'
 import { StorytellingLink } from './components/Hero/Hero'
 import HeroAbout from './components/HeroAbout/HeroAbout'
 import Works from './components/Works/Works'
+import Contact from './components/Contact/Contact'
+import Footer from './components/Footer/Footer'
 import './App.css'
 
 export default function App() {
@@ -50,7 +52,9 @@ export default function App() {
       <main className="portfolio_main">
         <HeroAbout />
         <Works />
+        <Contact />
       </main>
+      <Footer />
       <StorytellingLink />
     </div>
   )

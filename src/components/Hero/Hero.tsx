@@ -1,3 +1,4 @@
+import ActionArrow from '../Works/ActionArrow'
 import { useEffect, useRef } from 'react'
 import hero_01 from '../../assets/hero_01.png'
 import hero_02 from '../../assets/hero_02.png'
@@ -69,7 +70,7 @@ export function StorytellingLink() {
       {profile.storytelling_url && (
         <a className="storytelling_link" href={profile.storytelling_url} target="_blank" rel="noopener noreferrer">
           <span className="storytelling_dot" aria-hidden="true" />
-          Storytelling Portfolio <span aria-hidden="true">↗</span>
+          Storytelling Portfolio <ActionArrow stroke_width={2} />
           <span className="visually_hidden"> (새 탭에서 열림)</span>
         </a>
       )}

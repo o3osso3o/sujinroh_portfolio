@@ -4,7 +4,7 @@ const navigation_items = [
   { label: 'Home', href: '#home', available: true },
   { label: 'About', href: '#about', available: true },
   { label: 'Works', href: '#works', available: true },
-  { label: 'Contact', href: '#contact', available: false },
+  { label: 'Contact', href: '#contact', available: true },
 ]
 
 export default function Header() {

@@ -27,7 +27,7 @@
 .works_card_type, .works_keywords, .works_eyebrow { font-size: var(--font_size_small); color: var(--color_text_secondary); }
 .works_card_details { display: flex; flex: 1; flex-direction: column; gap: var(--space_3); width: 100%; padding-block: var(--space_4) var(--space_6); font-size: var(--font_size_small); overflow-wrap: anywhere; }
 .works_card_action { display: flex; justify-content: space-between; align-items: center; gap: var(--space_4); margin-top: auto; color: var(--color_accent); }
-.works_card_action > span { font-size: 1.375rem; }
+.works_card_action > svg { flex-shrink: 0; }
 @media (hover: hover) and (pointer: fine) {
   .works_card_details { opacity: 0; transition: opacity 180ms ease; }
   .works_card_control:hover .works_card_details, .works_card_control:focus-within .works_card_details { opacity: 1; }
