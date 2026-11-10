@@ -14,7 +14,7 @@ export default function AboutSlideshow() {
   const [page_hidden, set_page_hidden] = useState(document.hidden)
 
   useEffect(() => {
-    if (!('IntersectionObserver' in window)) {
+    if (typeof window.IntersectionObserver === 'undefined') {
       const timer = window.setTimeout(() => set_in_view(true), 0)
       return () => window.clearTimeout(timer)
     }
@@ -37,7 +37,7 @@ export default function AboutSlideshow() {
 
   useEffect(() => {
     if (!in_view || paused || hovered || focused || reduced_motion || page_hidden) return
-    const timer = window.setTimeout(() => set_active_index((previous) => (previous + 1) % about_slides.length), 4000)
+    const timer = window.setTimeout(() => set_active_index((previous) => (previous + 1) % about_slides.length), 3000)
     return () => window.clearTimeout(timer)
   }, [in_view, active_index, timer_version, paused, hovered, focused, reduced_motion, page_hidden])
 
@@ -51,6 +51,7 @@ export default function AboutSlideshow() {
           {about_slides.map((slide, index) => (
             <div className="about_slide" data-active={index === active_index} aria-hidden={index !== active_index} key={slide.letter}>
               {slide.src ? <img src={slide.src} alt={slide.alt} width={420} height={400} /> : <div className="about_slide_placeholder" role="img" aria-label={slide.alt}>사진 준비 중</div>}
+              <span className="about_slide_caption">{slide.title}</span>
             </div>
           ))}
         </div>
@@ -63,10 +64,15 @@ export default function AboutSlideshow() {
             </button>
           ))}
         </div>
-      </div>
-      {!reduced_motion && <button className="about_slide_pause" type="button" onClick={() => set_paused((previous) => !previous)}>
-        {paused ? '자동 전환 재생' : '자동 전환 일시정지'}
+      {!reduced_motion && <button className="about_slide_pause" type="button"
+        aria-label={paused ? '자동 전환 재생' : '자동 전환 일시정지'}
+        title={paused ? '자동 전환 재생' : '자동 전환 일시정지'}
+        onClick={() => set_paused((previous) => !previous)}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" aria-hidden="true">
+          {paused ? <path d="M6 3 21 12 6 21Z" /> : <><rect x="5" y="4" width="5" height="16" rx="0.5" /><rect x="14" y="4" width="5" height="16" rx="0.5" /></>}
+        </svg>
       </button>}
+      </div>
     </section>
   )
 }

@@ -5,7 +5,7 @@ import { field_names, get_form_endpoint, submit_contact, validate_contact } from
 import type { ContactValues, FieldErrors } from './contact_form'
 import './Contact.css'
 
-const endpoint = get_form_endpoint(import.meta.env.VITE_FORMSPREE_ENDPOINT)
+const endpoint = get_form_endpoint(import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/mlgqdnvn')
 const fields = [
   { name: 'name', label: 'Name', placeholder: '이름', type: 'text', auto_complete: 'name' },
   { name: 'email', label: 'Email', placeholder: '답장 받을 이메일', type: 'email', auto_complete: 'email' },

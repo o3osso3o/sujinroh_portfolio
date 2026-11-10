@@ -44,15 +44,30 @@ export default function ProjectModal({ project, on_close }: { project: Project; 
         <div className="works_modal_top"><span>PROJECT {String(project.order).padStart(2, '0')}</span><button ref={close_ref} type="button" onClick={request_close} aria-label="프로젝트 상세 닫기"><span aria-hidden="true">×</span></button></div>
         <div className="works_modal_content">
           <div className="works_modal_media">
-          <ProjectVisual image={project.image ?? project.thumbnail} title={project.name} />
+          {project.video_url ? (
+            <video className="works_modal_video" src={project.video_url}
+              style={{
+                aspectRatio: project.video_ratio,
+                maxWidth: ['tot', 'od'].includes(project.id) && project.video_ratio
+                  ? `min(90%, calc(var(--modal_video_height) * (${project.video_ratio})))`
+                  : '100%',
+              }}
+              poster={(project.image ?? project.thumbnail)?.src}
+              aria-label={`${project.name} 프로젝트 영상`}
+              controls muted loop playsInline preload="metadata"
+              autoPlay={!window.matchMedia('(prefers-reduced-motion: reduce)').matches} />
+          ) : <ProjectVisual image={project.image ?? project.thumbnail} title={project.name} />}
           <div className="works_modal_actions">
             {[
               { label: 'VIEW PROCESS', url: project.process_url },
               { label: 'VIEW LIVE', url: project.live_url },
             ].map(({ label, url }) => url ? (
-              <a key={label} href={url} target="_blank" rel="noopener noreferrer">{label}<ActionArrow /><span className="visually_hidden"> (새 탭)</span></a>
+              <a key={label} className={label === 'VIEW LIVE' ? 'works_modal_live' : 'works_modal_process'} href={url} target="_blank" rel="noopener noreferrer">{label}<ActionArrow /><span className="visually_hidden"> (새 탭)</span></a>
             ) : (
-              <button key={label} type="button" disabled aria-label={`${label} (링크 준비 중)`} title="링크 준비 중">{label}<ActionArrow /></button>
+              <button key={label} className="works_modal_pending" type="button" disabled aria-label={`${label} (준비 중)`}>
+                <span className="works_modal_pending_label">{label}<ActionArrow /></span>
+                <span className="works_modal_pending_notice" aria-hidden="true">준비 중</span>
+              </button>
             ))}
           </div>
           </div>

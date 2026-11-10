@@ -27,6 +27,8 @@ export interface Project {
   tools: string[]
   thumbnail: ProjectImage | null
   image: ProjectImage | null
+  video_url?: string
+  video_ratio?: string
   process_url: string | null
   live_url: string | null
   external_url: string | null
