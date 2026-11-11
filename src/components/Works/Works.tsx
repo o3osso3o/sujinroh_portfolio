@@ -31,7 +31,7 @@ export default function Works() {
 
   return (
     <section id="works" className="works_section" aria-labelledby="works_title">
-      <h2 id="works_title" className="works_heading">WORKS</h2>
+      <h2 id="works_title" className="works_heading">WORK</h2>
       <ol className="works_grid" ref={grid_ref}>
         {[...projects].sort((a, b) => a.order - b.order).map((project) => {
           const external = project.presentation === 'external'
