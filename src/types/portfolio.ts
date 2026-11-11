@@ -31,6 +31,7 @@ export interface Project {
   video_ratio?: string
   process_url: string | null
   live_url: string | null
+  prototype_url?: string
   external_url: string | null
 }
 

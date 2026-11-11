@@ -102,7 +102,7 @@ export const projects: Project[] = [
     project_type: 'Product Planning & UX/UI Design',
     video_url: tot_video,
     video_ratio: '41 / 80',
-    live_url: 'https://hyunjireal.github.io/resimmons/',
+    prototype_url: 'https://www.figma.com/proto/1Cnl4hvgFNv4cDEFC8v0JK/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EA%B3%B5%EC%9C%A0%EC%9A%A9?node-id=1-1781&viewport=182%2C25%2C0.14&t=Ts3gd3vtijytpFoe-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A1781&page-id=0%3A1',
     keywords: ['App Design', 'Personal Project'],
     summary: '사용자의 기분과 상황에 맞는 걷기 코스와 음악을 함께 추천하고, 여러 앱을 오가는 번거로움 없이 간편하게 걷기를 시작할 수 있도록 설계한 모바일 앱 프로젝트',
     description: '사용자의 기분과 상황에 맞는 걷기 코스와 음악을 함께 추천하고, 여러 앱을 오가는 번거로움 없이 간편하게 걷기를 시작할 수 있도록 설계한 모바일 앱 프로젝트입니다.',

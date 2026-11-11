@@ -60,9 +60,9 @@ export default function ProjectModal({ project, on_close }: { project: Project; 
           <div className="works_modal_actions">
             {[
               { label: 'VIEW PROCESS', url: project.process_url },
-              { label: 'VIEW LIVE', url: project.live_url },
+              { label: project.prototype_url ? 'VIEW PROTOTYPE' : 'VIEW LIVE', url: project.prototype_url ?? project.live_url },
             ].map(({ label, url }) => url ? (
-              <a key={label} className={label === 'VIEW LIVE' ? 'works_modal_live' : 'works_modal_process'} href={url} target="_blank" rel="noopener noreferrer">{label}<ActionArrow /><span className="visually_hidden"> (새 탭)</span></a>
+              <a key={label} className={label === 'VIEW PROCESS' ? 'works_modal_process' : 'works_modal_live'} href={url} target="_blank" rel="noopener noreferrer">{label}<ActionArrow /><span className="visually_hidden"> (새 탭)</span></a>
             ) : (
               <button key={label} className="works_modal_pending" type="button" disabled aria-label={`${label} (준비 중)`}>
                 <span className="works_modal_pending_label">{label}<ActionArrow /></span>
